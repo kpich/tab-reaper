@@ -46,7 +46,7 @@ def main() -> None:
     current_date = datetime.now().strftime("%Y-%m-%d")
 
     text = f"{current_date}\n\n"
-    html = f"<p><strong>{current_date}</strong></p>\n"
+    html = f"<h2>{current_date}</h2>\n"
 
     for tab in selected_tabs:
         text += f"• {tab['title']}\n  {tab['url']}\n\n"
