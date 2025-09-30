@@ -16,8 +16,10 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
-dependencies = [
-]
+dependencies = []
+
+[project.scripts]
+pdf-tab-reaper = "pdf_tab_reaper.pdf_tab_reaper:main"
 
 [project.optional-dependencies]
 dev = ["check-manifest", "mypy", "pyfakefs", "ruff", "types-tqdm"]
