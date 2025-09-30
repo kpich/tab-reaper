@@ -1,14 +1,36 @@
 """Main entry point for pdf-tab-reaper CLI tool."""
 
 import argparse
+import subprocess
 
-import pychrome
 
+def get_chrome_tabs() -> list[dict]:
+    """Get all open Chrome tabs via AppleScript."""
+    script = """
+    set output to ""
+    tell application "Google Chrome"
+        repeat with w in windows
+            repeat with t in tabs of w
+                set output to output & (URL of t) & "\\n" & (title of t) & "\\n"
+            end repeat
+        end repeat
+    end tell
+    return output
+    """
+    result = subprocess.run(
+        ["osascript", "-e", script], capture_output=True, text=True, check=True
+    )
+    output = result.stdout.strip()
+    if not output:
+        return []
 
-def get_chrome_tabs(port: int = 9222) -> list[dict]:
-    """Connect to Chrome via CDP and get all open tabs."""
-    browser = pychrome.Browser(url=f"http://127.0.0.1:{port}")
-    tabs = browser.list_tab()
+    tabs = []
+    lines = output.split("\n")
+    for i in range(0, len(lines), 2):
+        if i + 1 < len(lines):
+            url = lines[i].strip()
+            title = lines[i + 1].strip()
+            tabs.append({"url": url, "title": title})
     return tabs
 
 
@@ -29,15 +51,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="List and manage PDF/paper tabs in Chrome"
     )
-    parser.add_argument(
-        "--port",
-        type=int,
-        default=9222,
-        help="Chrome remote debugging port (default: 9222)",
-    )
-    args = parser.parse_args()
+    parser.parse_args()
 
-    tabs = get_chrome_tabs(args.port)
+    tabs = get_chrome_tabs()
     relevant_tabs = [tab for tab in tabs if is_relevant_tab(tab)]
 
     print(f"Found {len(relevant_tabs)} relevant tabs:\n")

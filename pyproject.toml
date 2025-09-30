@@ -16,9 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
-dependencies = [
-    "pychrome",
-]
+dependencies = []
 
 [project.scripts]
 pdf-tab-reaper = "pdf_tab_reaper.pdf_tab_reaper:main"
