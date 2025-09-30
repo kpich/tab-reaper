@@ -16,7 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
-dependencies = []
+dependencies = ["questionary"]
 
 [project.scripts]
 tab-reaper = "tab_reaper.tab_reaper:main"

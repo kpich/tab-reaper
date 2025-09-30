@@ -3,6 +3,8 @@
 import argparse
 import subprocess
 
+import questionary
+
 
 def get_chrome_tabs() -> list[dict]:
     """Get all open Chrome tabs via AppleScript."""
@@ -56,12 +58,30 @@ def main() -> None:
     parser.parse_args()
 
     tabs = get_chrome_tabs()
-    relevant_tabs = [tab for tab in tabs if is_relevant_tab(tab)]
 
-    print(f"Found {len(relevant_tabs)} relevant tabs:\n")
-    for tab in relevant_tabs:
-        print(f"Title: {tab.get('title', 'N/A')}")
-        print(f"URL:   {tab.get('url', 'N/A')}")
+    choices = [
+        questionary.Choice(
+            title=f"{tab['title'][:80]}... - {tab['url'][:50]}"
+            if len(tab["title"]) > 80
+            else f"{tab['title']} - {tab['url'][:50]}",
+            value=tab,
+            checked=is_relevant_tab(tab),
+        )
+        for tab in tabs
+    ]
+
+    selected_tabs = questionary.checkbox(
+        "Select tabs to file (space to toggle, enter to confirm):", choices=choices
+    ).ask()
+
+    if selected_tabs is None:
+        print("Cancelled.")
+        return
+
+    print(f"\nSelected {len(selected_tabs)} tabs to file:\n")
+    for tab in selected_tabs:
+        print(f"Title: {tab['title']}")
+        print(f"URL:   {tab['url']}")
         print()
 
 
