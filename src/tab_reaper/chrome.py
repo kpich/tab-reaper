@@ -47,6 +47,10 @@ def is_relevant_tab(tab: dict) -> bool:
             "nature.com" in url,
             "pubmed.ncbi.nlm.nih.gov" in url,
             "pmc.ncbi.nlm.nih.gov" in url,
+            "sciencedirect.com" in url,
+            "cell.com" in url,
+            "biomedcentral.com" in url,
+            "frontiersin.org" in url,
             url.endswith(".pdf"),
         ]
     )
