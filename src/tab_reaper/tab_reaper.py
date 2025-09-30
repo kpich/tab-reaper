@@ -37,6 +37,10 @@ def get_demo_tabs() -> list[dict]:
             "title": "do cars have feelings - Google Search",
         },
         {
+            "url": "https://www.google.com/search?q=how+to+tell+does+your+car+hate+you",
+            "title": "how to tell does your car hate you - Google Search",
+        },
+        {
             "url": "https://www.nature.com/articles/s41586-023-01234-5",
             "title": "Breakthrough in quantum computing error correction",
         },
