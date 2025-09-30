@@ -29,7 +29,7 @@ def main() -> None:
     ]
 
     selected_tabs = questionary.checkbox(
-        "Tabs to add to gdoc and close (space/arrows, enter=confirm, Ctrl+C=cancel):",
+        "Tabs to save (space/arrows, enter=confirm, Ctrl+C=cancel):",
         choices=choices,
         instruction="",
     ).ask()
@@ -48,7 +48,7 @@ def main() -> None:
 
     subprocess.run(["pbcopy"], input=text.encode(), check=True)
     print(f"\n✓ Copied {len(selected_tabs)} tabs to clipboard!")
-    print("Paste into your Google Doc with Cmd+V")
+    print("Paste anywhere with Cmd+V")
 
 
 if __name__ == "__main__":
