@@ -35,12 +35,14 @@ def get_chrome_tabs() -> list[dict]:
 
 
 def is_relevant_tab(tab: dict) -> bool:
-    """Check if a tab is a paper (arxiv, biorxiv, or PDF)."""
+    """Check if a tab is a paper (arxiv, biorxiv, nature, pubmed, or PDF)."""
     url = tab.get("url", "").lower()
     return any(
         [
             "arxiv.org" in url,
             "biorxiv.org" in url,
+            "nature.com" in url,
+            "pubmed.ncbi.nlm.nih.gov" in url,
             url.endswith(".pdf"),
         ]
     )
