@@ -27,7 +27,7 @@ pip install .
 tab-reaper
 ```
 
-1. Select tabs to save (space to toggle, enter to confirm)
+1. Select tabs to save (PDFs/arxiv/biorxiv/nature/pubmed pre-selected, space to toggle, enter to confirm)
 2. Tabs are copied to your clipboard
 3. Paste anywhere with Cmd+V
 4. Optionally close all copied tabs
