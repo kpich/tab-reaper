@@ -17,17 +17,22 @@ uvx --from git+https://github.com/kpich/tab-reaper.git tab-reaper
 ```
 
 Then:
+
 1. Select tabs to save (PDFs/arxiv/biorxiv/nature/pubmed pre-selected, space to toggle, enter to confirm)
+
    ![Selection screen](readme_images/step1_selection.png)
 
 2. Tabs are copied to your clipboard
-   ![Copied confirmation](readme_images/step2_copied.png)
+
+   <img src="readme_images/step2_copied.png" width="400">
 
 3. Paste anywhere with Cmd+V (here's what it looks like when pasted)
-   ![Pasted output](readme_images/step3_pasted.png)
+
+   <img src="readme_images/step3_pasted.png" width="50%">
 
 4. Optionally close all copied tabs (hit `y` to close them)
-   ![Close tabs prompt](readme_images/step4_close.png)
+
+   <img src="readme_images/step4_close.png" width="400">
 
 ## More complicated: Installing + running separately
 
