@@ -1,11 +1,11 @@
 """Main entry point for pdf-tab-reaper CLI tool."""
 
 import argparse
+import subprocess
 
 import questionary
 
 from tab_reaper.chrome import get_chrome_tabs, is_relevant_tab
-from tab_reaper.gdocs import append_to_doc, extract_doc_id, get_google_docs_service
 
 
 def main() -> None:
@@ -42,24 +42,13 @@ def main() -> None:
         print("No tabs selected.")
         return
 
-    doc_url = questionary.text("Paste Google Doc URL:").ask()
+    text = ""
+    for tab in selected_tabs:
+        text += f"• {tab['title']}\n  {tab['url']}\n\n"
 
-    if not doc_url:
-        print("Cancelled.")
-        return
-
-    doc_id = extract_doc_id(doc_url)
-    if not doc_id:
-        print("Error: Invalid Google Docs URL")
-        return
-
-    service = get_google_docs_service()
-    if not service:
-        return
-
-    print(f"\nAppending {len(selected_tabs)} tabs to Google Doc...")
-    append_to_doc(service, doc_id, selected_tabs)
-    print("✓ Successfully added tabs to Google Doc!")
+    subprocess.run(["pbcopy"], input=text.encode(), check=True)
+    print(f"\n✓ Copied {len(selected_tabs)} tabs to clipboard!")
+    print("Paste into your Google Doc with Cmd+V")
 
 
 if __name__ == "__main__":
