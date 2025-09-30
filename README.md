@@ -23,6 +23,8 @@ pip install .
 
 ## Usage
 
+Open Terminal (or iTerm) and run:
+
 ```bash
 tab-reaper
 ```
