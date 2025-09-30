@@ -1,9 +1,10 @@
 """Main entry point for pdf-tab-reaper CLI tool."""
 
 import argparse
-import subprocess
+from datetime import datetime
 
 import questionary
+import richxerox
 
 from tab_reaper.chrome import get_chrome_tabs, is_relevant_tab
 
@@ -42,11 +43,19 @@ def main() -> None:
         print("No tabs selected.")
         return
 
-    text = ""
+    current_date = datetime.now().strftime("%Y-%m-%d")
+
+    text = f"{current_date}\n\n"
+    html = f"<p><strong>{current_date}</strong></p>\n"
+
     for tab in selected_tabs:
         text += f"• {tab['title']}\n  {tab['url']}\n\n"
+        html += (
+            f"<p>• <strong>{tab['title']}</strong><br>\n"
+            f"  <a href=\"{tab['url']}\">{tab['url']}</a></p>\n"
+        )
 
-    subprocess.run(["pbcopy"], input=text.encode(), check=True)
+    richxerox.copy(text=text, html=html)
     print(f"\n✓ Copied {len(selected_tabs)} tabs to clipboard!")
     print("Paste anywhere with Cmd+V")
 
