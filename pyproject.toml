@@ -18,6 +18,7 @@ classifiers = [
 
 dependencies = [
     "questionary",
+    "richxerox",
 ]
 
 [project.scripts]
