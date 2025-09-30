@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["pdf_tab_reaper*"]
+include = ["tab_reaper*"]
 
 [project]
-name = "clintag"
+name = "tab-reaper"
 dynamic = ["version"]
 requires-python = ">=3.11, <4"
 classifiers = [
@@ -19,7 +19,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-pdf-tab-reaper = "pdf_tab_reaper.pdf_tab_reaper:main"
+tab-reaper = "tab_reaper.tab_reaper:main"
 
 [project.optional-dependencies]
 dev = ["check-manifest", "mypy", "pyfakefs", "ruff", "types-tqdm"]
@@ -46,4 +46,4 @@ ignore = ["SIM108"]  # Allow if-else over ternary for readability
 [tool.ruff.lint.isort]
 force-single-line = false
 force-sort-within-sections = true
-known-first-party = ["pdf_tab_reaper"]
+known-first-party = ["tab_reaper"]
