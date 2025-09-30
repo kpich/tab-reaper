@@ -71,7 +71,9 @@ def main() -> None:
     ]
 
     selected_tabs = questionary.checkbox(
-        "Select tabs to file (space to toggle, enter to confirm):", choices=choices
+        "Tabs to add to gdoc and close (use space + arrows, enter to confirm):",
+        choices=choices,
+        instruction="",
     ).ask()
 
     if selected_tabs is None:
