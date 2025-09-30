@@ -6,6 +6,8 @@ utility if you are drowning in open arxiv tabs like I always am
 
 ## Installation
 
+Open Terminal (or iTerm) and run one of the following:
+
 **Option 1: Using uv (recommended)**
 ```bash
 uv tool install git+https://github.com/kpich/tab-reaper.git
@@ -22,8 +24,6 @@ pip install .
 ```
 
 ## Usage
-
-Open Terminal (or iTerm) and run:
 
 ```bash
 tab-reaper
