@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=80", "setuptools_scm[toml]>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pdf_tab_reaper*"]
+
+[project]
+name = "clintag"
+dynamic = ["version"]
+requires-python = ">=3.11, <4"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = ["check-manifest", "mypy", "pyfakefs", "ruff", "types-tqdm"]
+test =["pytest", "pandas-stubs", "types-requests"]
+
+[tool.setuptools_scm]
+root = "."
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "SIM", # flake8-simplify
+]
+ignore = ["SIM108"]  # Allow if-else over ternary for readability
+
+[tool.ruff.lint.isort]
+force-single-line = false
+force-sort-within-sections = true
+known-first-party = ["pdf_tab_reaper"]

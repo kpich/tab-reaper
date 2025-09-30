@@ -1,0 +1,20 @@
+# project-specific
+
+# python build
+.idea
+build
+dist
+*.egg-info
+
+# python runtime
+__pycache__/
+*.py[cod]
+
+# Vim temporary files
+*~
+*.swp
+*.swo
+
+# OSX finder files
+.DS_Store
+.DS_store
