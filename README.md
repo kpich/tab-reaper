@@ -1,5 +1,5 @@
 
-Saves open pdf/arxiv/bioarxiv tabs to your clipboard for easy pasting.
+Saves open pdf/arxiv/bioarxiv/nature/cell/etc tabs to your clipboard for easy pasting.
 
 Not user-friendly at all lol look I built this for myself sorry, maybe you'll find
 utility if you are drowning in open arxiv tabs like I always am
