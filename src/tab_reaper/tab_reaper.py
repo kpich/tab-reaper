@@ -6,7 +6,7 @@ from datetime import datetime
 import questionary
 import richxerox
 
-from tab_reaper.chrome import get_chrome_tabs, is_relevant_tab
+from tab_reaper.chrome import close_chrome_tabs, get_chrome_tabs, is_relevant_tab
 
 
 def main() -> None:
@@ -58,6 +58,12 @@ def main() -> None:
     richxerox.copy(text=text, html=html)
     print(f"\n✓ Copied {len(selected_tabs)} tabs to clipboard!")
     print("Paste anywhere with Cmd+V")
+
+    should_close = questionary.confirm("Close all copied tabs?", default=False).ask()
+
+    if should_close:
+        close_chrome_tabs(selected_tabs)
+        print(f"✓ Closed {len(selected_tabs)} tabs")
 
 
 if __name__ == "__main__":
