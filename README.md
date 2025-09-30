@@ -7,5 +7,5 @@ utility if you are drowning in open arxiv tabs like I always am
 ## Usage
 
 ```bash
-pdf-tab-reaper
+tab-reaper
 ```
