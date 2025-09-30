@@ -16,7 +16,12 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
-dependencies = ["questionary"]
+dependencies = [
+    "questionary",
+    "google-api-python-client",
+    "google-auth-httplib2",
+    "google-auth-oauthlib",
+]
 
 [project.scripts]
 tab-reaper = "tab_reaper.tab_reaper:main"
